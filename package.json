@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prepare": "husky",
+    "prepare": "node -e \"if (!process.env.CI && !process.env.VERCEL) require('child_process').execSync('husky', {stdio:'inherit'})\"",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -36,9 +36,11 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "postcss": "^8",
-    "r3f-perf": "^7.2.3",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
